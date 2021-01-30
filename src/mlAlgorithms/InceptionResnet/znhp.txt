@@ -1,0 +1,1 @@
+nohup python traininceptionresnet.py > out_inceptresnet224_0.log &
