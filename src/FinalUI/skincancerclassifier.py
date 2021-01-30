@@ -14,9 +14,9 @@ import os
 import tensorflow as tf
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
-config = tf.ConfigProto()
-config.gpu_options.allow_growth = True
-tf.keras.backend.set_session(tf.Session(config=config))
+#config = tf.ConfigProto()
+#config.gpu_options.allow_growth = True
+#tf.keras.backend.set_session(tf.Session(config=config))
 
 class SkinCancerClassifier():
     def __init__(self, dim_size=224):
