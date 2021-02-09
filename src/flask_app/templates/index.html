@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}
+    Skin Cancer Classifier
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-md-7 col-lg-8">
+            <h4 class="mb-3">Skin Cancer Classifier</h4>
+
+            <form action="/results" method="POST" enctype=multipart/form-data class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Place skin cancer image for classification</label>
+                    <input class="form-control" type="file" id="formFile" name="file" required>
+                    <div style="color: red">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for msg in messages %}
+                                <p> {{msg}} </p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    </div>
+                </div>
+
+                <hr class="my-4">
+        
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="resnet" name="nn" value="0">
+                    <label class="form-check-label" for="resnet">Resnet</label>
+                </div>
+        
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="inception" name="nn" value="1">
+                    <label class="form-check-label" for="inception">Inception</label>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="inceptionresnet" name="nn" value="2">
+                    <label class="form-check-label" for="inceptionresnet">InceptionResnet</label>
+                </div>
+        
+                <hr class="my-4">
+        
+                <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

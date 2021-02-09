@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}
+Skin Cancer Classifier
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <main>
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+            <h2>Checkout form</h2>
+            <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has
+                a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-5 col-lg-4">
+                <p><img src={{ image }} style="max-width: 250px; max-height: 250px;"></p>
+            </div>
+        </div>
+        
+        <div class="col-md-7 col-lg-10">
+            <div class="row g-3">
+                {% for result in output %}
+                <h2>{{result[0]}}</h2>
+                    {% for tuple in result[1:] %}
+                        <p><b>{{tuple[1]}}:</b> {{tuple[2]*100}} % </p>
+                    {% endfor %}
+                <hr>
+                {% endfor %}
+
+                <form action={{ url_for("index") }}>
+                    <button class="w-50 btn btn-primary " type="submit">Return</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+
+{% endblock %}

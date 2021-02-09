@@ -7,11 +7,10 @@ from keras.preprocessing import image
 from keras.layers import Input
 from util import map_scores
 import numpy as np
-import tensorflow as tf
+#import tensorflow as tf
 import time
 
 import os
-import tensorflow as tf
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 #config = tf.ConfigProto()
