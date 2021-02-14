@@ -11,7 +11,7 @@
             <form action="/results" method="POST" enctype=multipart/form-data class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Place skin cancer image for classification</label>
-                    <input class="form-control" type="file" id="formFile" name="file" required>
+                    <input class="form-control" type="file" id="formFile" name="file" accept="image/*" onchange="loadFile(event)" required>
                     <div style="color: red">
                     {% with messages = get_flashed_messages() %}
                         {% if messages %}
@@ -21,23 +21,34 @@
                         {% endif %}
                     {% endwith %}
                     </div>
+                    <img id="output" src={{ url_for('static', filename='placeholder.png') }} style="width: 300px; height: 300px;" alt="Placeholder" />
+                    <script>
+                        var loadFile = function (event) {
+                            var reader = new FileReader();
+                            reader.onload = function () {
+                                var output = document.getElementById('output');
+                                output.src = reader.result;
+                            };
+                            reader.readAsDataURL(event.target.files[0]);
+                        };
+                    </script>
                 </div>
 
                 <hr class="my-4">
         
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="resnet" name="nn" value="0">
-                    <label class="form-check-label" for="resnet">Resnet</label>
+                    <label class="form-check-label" for="resnet">ResNet152V2</label>
                 </div>
         
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="inception" name="nn" value="1">
-                    <label class="form-check-label" for="inception">Inception</label>
+                    <label class="form-check-label" for="inception">InceptionV3</label>
                 </div>
 
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="inceptionresnet" name="nn" value="2">
-                    <label class="form-check-label" for="inceptionresnet">InceptionResnet</label>
+                    <label class="form-check-label" for="inceptionresnet">InceptionResNetV2</label>
                 </div>
         
                 <hr class="my-4">
@@ -46,5 +57,7 @@
             </form>
         </div>
     </div>
+
+    
 
 {% endblock %}

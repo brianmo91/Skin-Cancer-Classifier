@@ -15,13 +15,13 @@ def map_scores(preds, top=3):
     """
     
     CLASS_INDEX = {
-        '0': ["akiec","Actinic keratoses and intraepithelial carcinoma / Bowen's disease"], 
-        '1': ["bcc","basal cell carcinoma"], 
-        '2': ["bkl","benign keratosis-like lesions, solar lentigines / seborrheic keratoses and lichen-planus like keratoses"], 
-        '3': ["df","dermatofibroma"], 
-        '4': ["mel","melanoma"], 
-        '5': ["nv","melanocytic nevi"], 
-        '6': ["vasc","vascular lesions (angiomas, angiokeratomas, pyogenic granulomas and hemorrhage)"]
+        '0': ["akiec","Actinic Keratoses and Intraepithelial Carcinoma / Bowen's Disease"], 
+        '1': ["bcc","Basal Cell Carcinoma"], 
+        '2': ["bkl","Solar Lentigines / Seborrheic Keratoses"], 
+        '3': ["df","Dermatofibroma"], 
+        '4': ["mel","Melanoma"], 
+        '5': ["nv","Melanocytic Nevi"], 
+        '6': ["vasc","Vascular Lesions (Angiomas, Angiokeratomas, Pyogenic Granulomas and Hemorrhage)"]
     }
 
     if top > 7:
@@ -37,3 +37,16 @@ def map_scores(preds, top=3):
         result.extend(scores)
         results.append(result)
     return results
+
+
+
+'''
+Original Descriptions
+'0': ["akiec","Actinic Keratoses and Intraepithelial Carcinoma / Bowen's Disease"], 
+'1': ["bcc","Basal Cell Carcinoma"], 
+'2': ["bkl","Benign Keratosis-like Lesions, Solar Lentigines / Seborrheic Keratoses and Lichen-planus like Keratoses"], 
+'3': ["df","Dermatofibroma"], 
+'4': ["mel","Melanoma"], 
+'5': ["nv","Melanocytic Nevi"], 
+'6': ["vasc","Vascular Lesions (Angiomas, Angiokeratomas, Pyogenic Granulomas and Hemorrhage)"]
+'''

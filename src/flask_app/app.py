@@ -11,6 +11,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 10
 app.secret_key = 'nhk221'
 
 s = skincancerclassifier.SkinCancerClassifier()
@@ -90,10 +91,11 @@ def results():
             path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(path)
 
-            image = send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+            #image = send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
             output = temp
             #output = s.run(path,choices)
+            #os.remove(path)
             return render_template('results.html', output=output, image=path)
         else:
             flash('Only image files allowed', 'warning')
