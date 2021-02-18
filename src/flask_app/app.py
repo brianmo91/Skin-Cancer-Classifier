@@ -66,6 +66,10 @@ def get_choices(arr):
         res[int(i)] = 1
     return res
 
+@app.errorhandler(413)
+def too_large(e):
+    return "File is too large", 413
+
 @app.route('/', methods=["POST","GET"])
 def index():
     return render_template('index.html')
