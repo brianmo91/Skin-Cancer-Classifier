@@ -6,29 +6,45 @@ Skin Cancer Classifier
 {% block body %}
 
 <div class="container">
-    <main>
-        <div class="row g-3">
-            <div class="col-md-5 col-lg-4">
-                <p><img src={{ image }} style="max-width: 250px; max-height: 250px;"></p>
-            </div>
+    <div class="row">
+    
+        <div class="col-md d-flex align-items-center justify-content-center">
+            <h1 class="mb-3">Results</h1>
         </div>
-        
-        <div class="col-md-7 col-lg-10">
-            <div class="row g-3">
-                {% for result in output %}
-                <h2>{{result[0]}}</h2>
-                    {% for tuple in result[1:] %}
-                        <p><b>{{tuple[1]}}:</b> {{tuple[2]*100}} % </p>
-                    {% endfor %}
-                <hr>
-                {% endfor %}
 
-                <form action={{ url_for("index") }}>
-                    <button class="w-50 btn btn-primary " type="submit">Return</button>
-                </form>
-            </div>
+        <div class="col-sm-5">
+            <img src={{ image }} style="width: 260px; max-height: 260px;">
         </div>
-    </main>
+
+    </div>
+    <div class="row">
+        <p></p>
+        
+        {% for result in output %}
+            <table class="table table-hover table-sm table-bordered">
+                <col style="width:60%">
+                <thead class="table-primary">
+                    <tr>
+                        <th colspan="2" style="padding-left: 3%;"><h4>{{result[0]}}</h4></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tuple in result[1:] %}
+                        <tr>
+                            <td style="padding-left: 3%;"><b>{{tuple[1]}}</b></td>
+                            <td>{{tuple[2]*100}}%</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p>
+            
+        {% endfor %}
+
+        <form action={{ url_for("index") }} class="d-flex justify-content-center">
+            <button class="w-50 btn btn-primary " type="submit">Return</button>
+        </form>
+    </div>
 </div>
 
 

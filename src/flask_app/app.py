@@ -54,7 +54,7 @@ def load():
     print('Runtime: ', end_time3-end_time2)
     print('Total Elapsed: ', end_time3-load_time1)
 
-#load()
+load()
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -95,10 +95,8 @@ def results():
             path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(path)
 
-            #image = send_from_directory(app.config['UPLOAD_FOLDER'], filename)
-
-            output = temp
-            #output = s.run(path,choices)
+            #output = temp
+            output = s.run(path,choices)
             #os.remove(path)
             return render_template('results.html', output=output, image=path)
         else:

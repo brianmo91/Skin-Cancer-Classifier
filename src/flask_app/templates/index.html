@@ -8,7 +8,7 @@
         <form action="/results" method="POST" enctype=multipart/form-data class="needs-validation" novalidate>
             <div class="row">
                 <div class="col-md">
-                    <h4 class="mb-3">Skin Cancer Classifier</h4>
+                    <h1 class="mb-3">Skin Cancer Classifier</h1>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Place skin cancer image for classification</label>
                         <input class="form-control" type="file" id="formFile" name="file" accept="image/*" onchange="loadFile(event)" required>
@@ -26,7 +26,6 @@
                     </div>
 
                     <hr class="my-4">
-            
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="resnet" name="nn" value="0">
                         <label class="form-check-label" for="resnet">ResNet152V2</label>
