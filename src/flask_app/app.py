@@ -16,28 +16,6 @@ app.secret_key = 'nhk221'
 
 s = skincancerclassifier.SkinCancerClassifier()
 
-temp = [
-            [
-                'ResNet152V2', 
-                ('nv', 'melanocytic nevi', 0.9999974), 
-                ('bkl', 'benign keratosis-like lesions, solar lentigines / seborrheic keratoses and lichen-planus like keratoses', 2.5060908e-06), 
-                ('akiec', "Actinic keratoses and intraepithelial carcinoma / Bowen's disease", 1.4720392e-07)
-            ], 
-            [
-                'InceptionResNetV2', 
-                ('nv', 'melanocytic nevi', 1.0), 
-                ('mel', 'melanoma', 2.9319884e-13), 
-                ('bkl', 'benign keratosis-like lesions, solar lentigines / seborrheic keratoses and lichen-planus like keratoses', 8.238215e-15)
-            ],
-            [
-                'InceptionResNetV2', 
-                ('nv', 'melanocytic nevi', 1.0), 
-                ('mel', 'melanoma', 2.93203314275306e-13), 
-                ('bkl', 'benign keratosis-like lesions, solar lentigines / seborrheic keratoses and lichen-planus like keratoses', 8.23808997906482e-15)
-            ]
-        ]
-
-
 def load():
     print('Loading models...')
     load_time1 = time.time()
@@ -95,9 +73,7 @@ def results():
             path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(path)
 
-            #output = temp
             output = s.run(path,choices)
-            #os.remove(path)
             return render_template('results.html', output=output, image=path)
         else:
             flash('Only image files allowed', 'warning')
@@ -106,4 +82,4 @@ def results():
         return redirect(url_for("index"))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

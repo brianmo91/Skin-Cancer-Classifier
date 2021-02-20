@@ -5,7 +5,7 @@
 
 {% block body %}
     <div class="container">
-        <form action="/results" method="POST" enctype=multipart/form-data class="needs-validation" novalidate>
+        <form action="/results" id="sectionForm" method="POST" enctype=multipart/form-data >
             <div class="row">
                 <div class="col-md">
                     <h1 class="mb-3">Skin Cancer Classifier</h1>
@@ -64,6 +64,8 @@
             </div>
         </form>
     </div>
+
+    <script src={{ url_for("static",filename="checkbox.js") }}></script>
 
     
 
