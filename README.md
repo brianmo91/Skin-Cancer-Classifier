@@ -1,16 +1,30 @@
 # Skin Cancer Classifier
 
-<img src="index.png" height=350 border="1px">
-<img src="results.png" height=350 border="1px">
+The Skin Cancer Classifier project makes use of convolutional neural networks to process an image input and classifies it between 7 types of skin cancer: 
+
+- actinic keratoses and intraepithelial carcinoma / Bowen's disease
+- basal cell carcinoma
+- benign keratosis-like lesions (solar lentigines / seborrheic keratoses and lichen-planus like keratoses)
+- dermatofibroma
+- melanoma
+- melanocytic nevi
+- vascular lesions (angiomas, angiokeratomas, pyogenic granulomas and hemorrhage)
+
+The user may choose any of the 3 different CNN models to process the input. (Resnet152V2, InceptionV3, InceptionResnetV2)
+
+<table><tr>
+<td><img src="index.png" height=300></td>
+<td><img src="results.png" height=300></td>
+</tr></table>
 
 Installation & Use
 ------------
 
 This project runs on the Flask framework. It is recommended to run this project in a virtual environment. You can do this with the following instructions:
 
-After forking, open CLI path to ```/src/flask_app/```
+After forking, open CLI path to ```src/flask_app/```
 
-##### Installing and Activating Virtual Environment (Recommended)
+#### Installing and Activating Virtual Environment (Recommended)
 
 ```
 pip install virtualenv
@@ -29,12 +43,12 @@ python -m venv env
 env\Scripts\activate
  ```
 
-##### Install Required Packages
+#### Install Required Packages
 
 ```
 pip install -r requirements.txt
 ```
-##### Running the Project
+#### Running the Project
 Start the project by running:
 ```
 flask run
@@ -50,8 +64,12 @@ Simply copy and paste the URL into your browser.
 
 Datasets
 --------
-
+The original dataset used for training the models can be found here: 
 <br>https://www.kaggle.com/kmader/skin-cancer-mnist-ham10000
+
+In order to balance out the amount of data for each class, as well as extending the training set, images were taken from the dataset and augmented. (Resized, rotated, zoomed, darkened/lightened, etc.) The code used for augmenting the data can be found in the folder 'datasets': ```src/datasets/```
 
 Training Models
 ---------------
+Each of the 3 CNN models (Resnet152V2, InceptionV3, InceptionResnetV2) were trained separately. The training code and logs can be found in the folder 'mlAlgorithms': ```src/mlAlgorithms/```
+
